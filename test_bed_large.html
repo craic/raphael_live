@@ -26,17 +26,18 @@
 		h2 { color: #f80; }
 		a { color: #f00; }
 
-		#sidebar {
+/*		#sidebar {
 			float: left;
 			width: 300px;
 			padding: 20px;
 			text-align: left;
 		}
-
+*/
 
 		#main {
+			/*
 			float: left;
-			padding: 20px;
+			padding: 20px;*/
 		}
 
 		#footer {
@@ -46,7 +47,7 @@
 		}
 		
         #canvas {
-            width: 600px;
+            width: 800px;
             height: 400px;
             margin: 0 auto;
             text-align: left;
@@ -59,8 +60,8 @@
         }
 
 		#code_container {
-		    width: 600px;
-		    height: 200px;
+		    width: 800px;
+		    height: 400px;
 		    margin-top: 10px;
 			margin-left: auto;
 		    margin-right: auto;
@@ -93,7 +94,7 @@
     // global variables ... I know, I know - but this is JavaScript....
     // 'paper' will be the raphael drawing object
 	var paper = undefined;
-	var paper_width = 600;
+	var paper_width = 800;
 	var paper_height = 400;
 	
 	var editor = undefined;
@@ -142,24 +143,13 @@
 		
 		// Function to load the code examples when you click on the sidebar links
         $('.tutorial_link').click(function() {
-			// alert("this is link " + this.id);
 			var url = "examples/" + this.id + ".js";
-
-//			if(this.id == 'tutorial1') {
-//			  url = 
-//			} else {
-//			  url = 'examples/circles.js'
-//			}
-// do I want to add a random number to the link to avoid caching issues?
-//			url = url + "?1918168"
-			
 			// Use ajax to fetch the code examples
 			$.get(url, function(data) {
 				editor.setCode(data);
 				// run the code immediately
 				draw(data);
       		});
-			
 		});
 		
     });
@@ -167,44 +157,7 @@
 </head>
 
 <body>
-
-<div id='sidebar'>
-    <h1>Raphaël Test Bed</h1>
-
-    <p><a href="http://raphaeljs.com/">Raphaël</a> is a JavaScript Library
-	for creating Vector Graphics (SVG) in the browser, created by 
-	<a href="http://dmitry.baranovskiy.com/">Dmitry Baranovskiy</a>.</p>
-	
-	<p>This page is a tool exploring Raphael. Enter JavaScript code in the lower panel -
-		 Click 'Run Code' to see the result.</p>
-	
-	<p>The Raphaël and jQuery libraries are already loaded.
-		The Canvas is 600 x 400 pixels with 0,0 in the top left corner
-		 and is accessed via the the variable 'paper'.</p>
-		
-	<h2>Live Examples</h2>
-	<p>Click to load examples, modify, run, repeat...</p>
-
-	<ul>
-	<li><a id='basic_shapes' class='tutorial_link' href='#'>Basic Shapes</a>	
-	<li><a id='rectangles' class='tutorial_link' href='#'>Rectangles</a>
-	<li><a id='circles'    class='tutorial_link' href='#'>Circles and Ellipses</a>
-	<li><a id='basic_styling' class='tutorial_link' href='#'>Basic Styling</a>
-	<li><a id='colors' class='tutorial_link' href='#'>Colors</a>
-	<li><a id='complex_shapes' class='tutorial_link' href='#'>Complex Shapes</a>
-	<li><a id='curves' class='tutorial_link' href='#'>Curves</a>
-	<li><a id='text' class='tutorial_link' href='#'>Text</a>
-	<li><a id='images' class='tutorial_link' href='#'>Images</a>
-	<li><a id='interactions' class='tutorial_link' href='#'>Interaction</a>
-	<li><a id='animation' class='tutorial_link' href='#'>Animation</a>
-	</ul>
-	
-	<p>Here is the <a href="http://raphaeljs.com/reference.html">Documentation</a></p>
-	
-	<p>Here is a <a href="test_bed_large.html">Larger Version of the Test Bed</a> with more workspace and less text.</p>
-		
-	<h2>Have at it!</h2>
-</div>
+<h1>Raphaël Test Bed</h1>
 
 <div id='main'>
     <div id="canvas"></div>
@@ -216,10 +169,10 @@
 	</div>
 
     <div id="code_container">
-	<textarea id="code">paper.text(300, 80, "Welcome to Raphaël").attr({'font-size': 32});
-paper.circle(300, 200, 60).attr({fill: '#f80', stroke: '#f80'});
-paper.rect(80,140,120,120).attr({fill: '#00f', stroke: '#00f'});
-paper.path("M400 260 L520 260L460 140 z").attr({fill: '#80f', stroke: '#80f'});
+	<textarea id="code">paper.text(400, 80, "Welcome to Raphaël").attr({'font-size': 32});
+paper.circle(400, 200, 60).attr({fill: '#f80', stroke: '#f80'});
+paper.rect(180,140,120,120).attr({fill: '#00f', stroke: '#00f'});
+paper.path("M500 260 L620 260L560 140 z").attr({fill: '#80f', stroke: '#80f'});
 	</textarea>
 	</div>
 
@@ -227,6 +180,14 @@ paper.path("M400 260 L520 260L460 140 z").attr({fill: '#80f', stroke: '#80f'});
 
 
 <div id="footer">
+    <p><a href="http://raphaeljs.com/">Raphaël</a> is a JavaScript Library
+	for creating Vector Graphics (SVG) in the browser, created by 
+	<a href="http://dmitry.baranovskiy.com/">Dmitry Baranovskiy</a>.</p>
+
+	<p>The Raphaël and jQuery libraries are already loaded.
+		The Canvas is 800 x 400 pixels and is accessed via the the variable 'paper'.</p>
+	<p><a href="http://raphaeljs.com/reference.html">Documentation</a>  &nbsp; &nbsp; <a href="test_bed.html">Version with Tutorial Links</a></p>
+	
 	<p>This page was created by Robert Jones at <a href="http://craic.com">Craic Computing</a> and leverages
 	 <a href="http://jquery.com">jQuery</a> and <a href="http://marijn.haverbeke.nl/codemirror/">CodeMirror</a>.</p>
 			
