@@ -120,10 +120,9 @@
 
         paper = Raphael("canvas", paper_width, paper_height);
 
-		// editor is not defined at this point??
-		// but the original value in the text area is available !
+		// the editor is not defined at this point??
+		// but the original value in the text area is available
 		draw($('#code').val());
-		
 		
 		// Define the Buttons
         $('#runCodeButton').click(function() {
@@ -142,17 +141,7 @@
 		
 		// Function to load the code examples when you click on the sidebar links
         $('.tutorial_link').click(function() {
-			// alert("this is link " + this.id);
 			var url = "examples/" + this.id + ".js";
-
-//			if(this.id == 'tutorial1') {
-//			  url = 
-//			} else {
-//			  url = 'examples/circles.js'
-//			}
-// do I want to add a random number to the link to avoid caching issues?
-//			url = url + "?1918168"
-			
 			// Use ajax to fetch the code examples
 			$.get(url, function(data) {
 				editor.setCode(data);
@@ -160,8 +149,7 @@
 				draw(data);
       		});
 			
-		});
-		
+		});	
     });
     </script>
 </head>
@@ -234,7 +222,7 @@ paper.path("M400 260 L520 260L460 140 z").attr({fill: '#80f', stroke: '#80f'});
 		<a href="http://www.opensource.org/licenses/mit-license.php">MIT license</a>.
 	</p>
 	
-	<p>Download it all from github. Read the source for the gory details</p>
+	<p>Download your own copy from <a href="http://github.com/craic/raphael_test_bed">GitHub</a> or use it here.</p>
 		
 </div>
 
