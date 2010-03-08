@@ -12,9 +12,7 @@ paper.rect(50, 150, 200, 50, 8).attr({fill: '#f00', 'stroke-width': 0});
 
 // or assign to a variable and use by separate attr() calls
 var r = paper.rect(350, 150, 200, 50, 8);
-r.attr('fill', '#0ff');
-// Or like this...
-r.attr({stroke: '#00f', 'stroke-width': 4});
+r.attr({fill: '#0ff', stroke: '#00f', 'stroke-width': 4});
 
 // Rectangles are drawn from the back to the front
 paper.rect(200, 250, 200, 50, 8).attr({fill: '#f00'});
