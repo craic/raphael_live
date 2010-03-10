@@ -2,7 +2,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Raphaël · Test Bed</title>
+    <title>Raphaël · Live</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js" type="text/javascript"></script>
     <script src="raphael-min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="codemirror/js/codemirror.js" type="text/javascript" ></script>
@@ -12,7 +12,7 @@
             margin: 0;
             padding: 0;
             text-align: center;
-    		background-color: #000;
+    		background-color: #333;
     		color: #fff;
 			font-family: "Myriad Pro", "Lucida Grande", "Lucida Sans Unicode", Lucida, Verdana, Helvetica, sans-serif;
 			font-size: 12px;	
@@ -24,20 +24,18 @@
         }
 
 		h2 { color: #f80; }
-		a { color: #f00; }
+		a  { color: #f00; }
 
-/*		#sidebar {
+		#sidebar {
 			float: left;
-			width: 300px;
+			width: 250px;
 			padding: 20px;
 			text-align: left;
 		}
-*/
 
 		#main {
-			/*
 			float: left;
-			padding: 20px;*/
+			padding: 20px;
 		}
 
 		#footer {
@@ -47,7 +45,7 @@
 		}
 		
         #canvas {
-            width: 800px;
+            width: 600px;
             height: 400px;
             margin: 0 auto;
             text-align: left;
@@ -60,8 +58,8 @@
         }
 
 		#code_container {
-		    width: 800px;
-		    height: 400px;
+		    width: 600px;
+		    height: 200px;
 		    margin-top: 10px;
 			margin-left: auto;
 		    margin-right: auto;
@@ -81,10 +79,7 @@
 
 	  #buttons { padding-top: 10px; }
 	
-      #runCodeButton, #clearCodeButton, #clearCanvasButton {
-          font-size: 14px;
-      }
-
+      #runCodeButton, #clearCodeButton, #clearCanvasButton { font-size: 14px; }
     </style>
 
 
@@ -94,7 +89,7 @@
     // global variables ... I know, I know - but this is JavaScript....
     // 'paper' will be the raphael drawing object
 	var paper = undefined;
-	var paper_width = 800;
+	var paper_width = 600;
 	var paper_height = 400;
 	
 	var editor = undefined;
@@ -121,10 +116,9 @@
 
         paper = Raphael("canvas", paper_width, paper_height);
 
-		// editor is not defined at this point??
-		// but the original value in the text area is available !
+		// the editor is not defined at this point??
+		// but the original value in the text area is available
 		draw($('#code').val());
-		
 		
 		// Define the Buttons
         $('#runCodeButton').click(function() {
@@ -150,14 +144,54 @@
 				// run the code immediately
 				draw(data);
       		});
-		});
-		
+			
+		});	
     });
     </script>
 </head>
 
 <body>
-<h1>Raphaël Test Bed</h1>
+
+<div id='sidebar'>
+    <h1>Raphaël Live</h1>
+
+    <p><a href="http://raphaeljs.com/">Raphaël</a> is a JavaScript Library
+	for creating Vector Graphics (SVG) in the browser, created by 
+	<a href="http://dmitry.baranovskiy.com/">Dmitry Baranovskiy</a>.</p>
+	
+	<p>This page is a tool for learning Raphael. Enter JavaScript code in the lower panel -
+		 Click 'Run Code' to see the result.</p>
+	
+	<p>Raphaël and jQuery are already loaded.
+		The Canvas is 600 x 400 pixels
+		 and is accessed via the variable 'paper'.</p>
+		
+	<h2>Live Examples</h2>
+	<p>Click to load examples, modify them, run, repeat... learn!</p>
+
+	<ul>
+	<li><a id='basic_shapes' class='tutorial_link' href='#'>Basic Shapes</a>	
+	<li><a id='rectangles' class='tutorial_link' href='#'>Rectangles</a>
+	<li><a id='circles'    class='tutorial_link' href='#'>Circles and Ellipses</a>
+	<li><a id='basic_styling' class='tutorial_link' href='#'>Basic Styling</a>
+	<li><a id='colors' class='tutorial_link' href='#'>Colors</a>
+	<li><a id='lines' class='tutorial_link' href='#'>Lines</a>
+	<li><a id='curves_cubic_bezier' class='tutorial_link' href='#'>Curves - Cubic Bezier</a>
+	<li><a id='curves_quadratic_bezier' class='tutorial_link' href='#'>Curves - Quadratic Bezier</a>
+	<li><a id='curves_elliptical_arc' class='tutorial_link' href='#'>Curves - Elliptical Arc</a>
+	<li><a id='sets' class='tutorial_link' href='#'>Sets</a>
+	<li><a id='text' class='tutorial_link' href='#'>Text</a>
+	<li><a id='images' class='tutorial_link' href='#'>Images</a>
+	<li><a id='interactions' class='tutorial_link' href='#'>Interaction</a>
+	<li><a id='animation' class='tutorial_link' href='#'>Animation</a>
+	</ul>
+	
+	<p><a href="http://raphaeljs.com/reference.html">Raphael Documentation</a> and <a href="http://raphaeljs.com/#demos">Advanced Demos</a></p>
+	
+	<p>Here is a <a href="raphael_live_large.html">Larger Version of this page</a> with more workspace and less text.</p>
+		
+	<h2>Have at it!</h2>
+</div>
 
 <div id='main'>
     <div id="canvas"></div>
@@ -169,10 +203,10 @@
 	</div>
 
     <div id="code_container">
-	<textarea id="code">paper.text(400, 80, "Welcome to Raphaël").attr({'font-size': 32});
-paper.circle(400, 200, 60).attr({fill: '#f80', stroke: '#f80'});
-paper.rect(180,140,120,120).attr({fill: '#00f', stroke: '#00f'});
-paper.path("M500 260 L620 260L560 140 z").attr({fill: '#80f', stroke: '#80f'});
+	<textarea id="code">paper.text(300, 80, "Welcome to Raphaël").attr({'font-size': 32});
+paper.circle(300, 200, 60).attr({fill: '#f80', stroke: '#f80'});
+paper.rect(80,140,120,120).attr({fill: '#00f', stroke: '#00f'});
+paper.path("M400 260 L520 260L460 140 z").attr({fill: '#80f', stroke: '#80f'});
 	</textarea>
 	</div>
 
@@ -180,14 +214,6 @@ paper.path("M500 260 L620 260L560 140 z").attr({fill: '#80f', stroke: '#80f'});
 
 
 <div id="footer">
-    <p><a href="http://raphaeljs.com/">Raphaël</a> is a JavaScript Library
-	for creating Vector Graphics (SVG) in the browser, created by 
-	<a href="http://dmitry.baranovskiy.com/">Dmitry Baranovskiy</a>.</p>
-
-	<p>The Raphaël and jQuery libraries are already loaded.
-		The Canvas is 800 x 400 pixels and is accessed via the the variable 'paper'.</p>
-	<p><a href="http://raphaeljs.com/reference.html">Documentation</a>  &nbsp; &nbsp; <a href="test_bed.html">Version with Tutorial Links</a></p>
-	
 	<p>This page was created by Robert Jones at <a href="http://craic.com">Craic Computing</a> and leverages
 	 <a href="http://jquery.com">jQuery</a> and <a href="http://marijn.haverbeke.nl/codemirror/">CodeMirror</a>.</p>
 			

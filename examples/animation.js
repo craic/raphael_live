@@ -13,3 +13,4 @@ r.animate({rotation: 360}, 2000, 'bounce');
 
 var r1 = paper.rect(300,200,100,100, 5).attr({fill: '0-#00f-#f0f'});
 r1.animate({rotation: -360}, 2000, 'bounce');
+

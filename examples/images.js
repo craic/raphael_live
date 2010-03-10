@@ -1,7 +1,7 @@
 // Images:
 // Place an image from a URL in the top left corner 
 var img = paper.image('examples/cats.jpg', 50, 20, 160, 120);
-// Clone the image object (in JavaScript) and then move it (in Raphael)
+// Clone the image object and then move it
 // Translate is relative to the original position
 img.clone().translate(0,200);
 // Clone, move and rotate
