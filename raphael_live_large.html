@@ -2,7 +2,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Raphaël · Test Bed</title>
+    <title>Raphaël · Live</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js" type="text/javascript"></script>
     <script src="raphael-min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="codemirror/js/codemirror.js" type="text/javascript" ></script>
@@ -26,19 +26,7 @@
 		h2 { color: #f80; }
 		a { color: #f00; }
 
-/*		#sidebar {
-			float: left;
-			width: 300px;
-			padding: 20px;
-			text-align: left;
-		}
-*/
-
-		#main {
-			/*
-			float: left;
-			padding: 20px;*/
-		}
+		#main {	}
 
 		#footer {
 			clear: both;
@@ -84,33 +72,26 @@
       #runCodeButton, #clearCodeButton, #clearCanvasButton {
           font-size: 14px;
       }
-
     </style>
 
 
-
     <script type="text/javascript" charset="utf-8">
-
-    // global variables ... I know, I know - but this is JavaScript....
     // 'paper' will be the raphael drawing object
 	var paper = undefined;
 	var paper_width = 800;
 	var paper_height = 400;
-	
 	var editor = undefined;
 	
 	function draw(text) {
 		// reset a white rectangle on the canvas
         paper.clear();
         paper.rect(0, 0, paper_width, paper_height).attr({fill: "#fff", stroke: "none"});
-
 		// execute the code
 		eval(text);
 	};
 
-
 	$(window).ready(function(){
-
+		
         editor = CodeMirror.fromTextArea("code", {
             parserfile: ["tokenizejavascript.js", "parsejavascript.js"],
             path: "codemirror/js/",
@@ -121,11 +102,9 @@
 
         paper = Raphael("canvas", paper_width, paper_height);
 
-		// editor is not defined at this point??
-		// but the original value in the text area is available !
+		// The editor is not yet created but the original textarea value is available
 		draw($('#code').val());
-		
-		
+				
 		// Define the Buttons
         $('#runCodeButton').click(function() {
 			// Get the code from the editor window and execute it
@@ -144,10 +123,9 @@
 		// Function to load the code examples when you click on the sidebar links
         $('.tutorial_link').click(function() {
 			var url = "examples/" + this.id + ".js";
-			// Use ajax to fetch the code examples
+			// Use ajax to fetch the code examples and run the code
 			$.get(url, function(data) {
 				editor.setCode(data);
-				// run the code immediately
 				draw(data);
       		});
 		});
@@ -157,7 +135,7 @@
 </head>
 
 <body>
-<h1>Raphaël Test Bed</h1>
+<h1>Raphaël Live</h1>
 
 <div id='main'>
     <div id="canvas"></div>
@@ -175,7 +153,6 @@ paper.rect(180,140,120,120).attr({fill: '#00f', stroke: '#00f'});
 paper.path("M500 260 L620 260L560 140 z").attr({fill: '#80f', stroke: '#80f'});
 	</textarea>
 	</div>
-
 </div>
 
 
@@ -188,14 +165,15 @@ paper.path("M500 260 L620 260L560 140 z").attr({fill: '#80f', stroke: '#80f'});
 		The Canvas is 800 x 400 pixels and is accessed via the the variable 'paper'.</p>
 	<p><a href="http://raphaeljs.com/reference.html">Documentation</a>  &nbsp; &nbsp; <a href="raphael_live.html">Version with Tutorial Links</a></p>
 	
-	<p>This page was created by Robert Jones at <a href="http://craic.com">Craic Computing</a> and leverages
-	 <a href="http://jquery.com">jQuery</a> and <a href="http://marijn.haverbeke.nl/codemirror/">CodeMirror</a>.</p>
+	<p>This page was created by Robert Jones at <a href="http://craic.com">Craic Computing</a>
+		and leverages <a href="http://jquery.com">jQuery</a> and 
+		<a href="http://marijn.haverbeke.nl/codemirror/">CodeMirror</a>.</p>
 			
 	<p>This code is freely distributed under the terms of the 
 		<a href="http://www.opensource.org/licenses/mit-license.php">MIT license</a>.
 	</p>
 	
-	<p>Download your own copy from <a href="http://github.com/craic/raphael_test_bed">GitHub</a> or use it here.</p>
+	<p>Download your own copy from <a href="http://github.com/craic/raphael_live">GitHub</a> or use it here.</p>
 		
 </div>
 

@@ -1,4 +1,6 @@
-Raphaël Test Bed
+Raphaël Live
+
+(Last updated 2010-03-11)
 
 This is a web page that lets you explore and experiment with the Raphaël JavaScript Library
 for creating Vector Graphics in the browser.
@@ -7,5 +9,17 @@ Raphaël was created by Dmitry Baranovskiy and can be found at http://raphaeljs.
 
 This page was created by Robert Jones at Craic Computing LLC (http://craic.com).
 
-5th March 2010 - initial upload to git hub - not quite ready for prime time but should be soon!
+The page uses jQuery (http://jquery.com) and CodeMirror (http://marijn.haverbeke.nl/codemirror/)
+
+The jQuery and Raphaël libraries are already loaded in the page and you access the
+Canvas through the variable 'paper'.
+
+This code is freely distributed under the terms of the MIT license (http://www.opensource.org/licenses/mit-license.php).
+	
+The code is available on github at http://github.com/craic/raphael_live. I hope to
+add and extend the examples over time so check back every so often.
+
+A live version of the page is available at http://craic.com/tutorials/javascript/raphael_live.html.
+
+
 

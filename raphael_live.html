@@ -78,31 +78,23 @@
       }
 
 	  #buttons { padding-top: 10px; }
-	
       #runCodeButton, #clearCodeButton, #clearCanvasButton { font-size: 14px; }
     </style>
 
-
-
     <script type="text/javascript" charset="utf-8">
-
-    // global variables ... I know, I know - but this is JavaScript....
     // 'paper' will be the raphael drawing object
 	var paper = undefined;
 	var paper_width = 600;
 	var paper_height = 400;
-	
 	var editor = undefined;
 	
 	function draw(text) {
-		// reset a white rectangle on the canvas
+		// reset a white background rectangle on the canvas
         paper.clear();
         paper.rect(0, 0, paper_width, paper_height).attr({fill: "#fff", stroke: "none"});
-
 		// execute the code
 		eval(text);
 	};
-
 
 	$(window).ready(function(){
 
@@ -116,13 +108,14 @@
 
         paper = Raphael("canvas", paper_width, paper_height);
 
-		// the editor is not defined at this point??
-		// but the original value in the text area is available
+		// The editor is not yet created but the original textarea value is available
 		draw($('#code').val());
 		
 		// Define the Buttons
         $('#runCodeButton').click(function() {
 			// Get the code from the editor window and execute it
+		    // Codemirror places an iframe over the textarea and works with that
+		    // instead of the original textarea
 			draw(editor.getCode());
 		});
 
@@ -139,13 +132,13 @@
         $('.tutorial_link').click(function() {
 			var url = "examples/" + this.id + ".js";
 			// Use ajax to fetch the code examples
+			// Place them in the code editor and run them
 			$.get(url, function(data) {
 				editor.setCode(data);
-				// run the code immediately
 				draw(data);
-      		});
-			
+      		});		
 		});	
+		
     });
     </script>
 </head>
@@ -163,8 +156,7 @@
 		 Click 'Run Code' to see the result.</p>
 	
 	<p>Raphaël and jQuery are already loaded.
-		The Canvas is 600 x 400 pixels
-		 and is accessed via the variable 'paper'.</p>
+		The Canvas is 600 x 400 pixels and is accessed via the variable 'paper'.</p>
 		
 	<h2>Live Examples</h2>
 	<p>Click to load examples, modify them, run, repeat... learn!</p>
@@ -188,7 +180,7 @@
 	
 	<p><a href="http://raphaeljs.com/reference.html">Raphael Documentation</a> and <a href="http://raphaeljs.com/#demos">Advanced Demos</a></p>
 	
-	<p>Here is a <a href="raphael_live_large.html">Larger Version of this page</a> with more workspace and less text.</p>
+	<p>Here is a <a href="raphael_live_large.html">Larger Version of this page</a> with more workspace but no examples.</p>
 		
 	<h2>Have at it!</h2>
 </div>
@@ -214,15 +206,16 @@ paper.path("M400 260 L520 260L460 140 z").attr({fill: '#80f', stroke: '#80f'});
 
 
 <div id="footer">
-	<p>This page was created by Robert Jones at <a href="http://craic.com">Craic Computing</a> and leverages
-	 <a href="http://jquery.com">jQuery</a> and <a href="http://marijn.haverbeke.nl/codemirror/">CodeMirror</a>.</p>
+	<p>This page was created by Robert Jones at <a href="http://craic.com">Craic Computing</a>
+	   and leverages <a href="http://jquery.com">jQuery</a> and 
+	   <a href="http://marijn.haverbeke.nl/codemirror/">CodeMirror</a>.</p>
 			
 	<p>This code is freely distributed under the terms of the 
 		<a href="http://www.opensource.org/licenses/mit-license.php">MIT license</a>.
 	</p>
 	
-	<p>Download your own copy from <a href="http://github.com/craic/raphael_test_bed">GitHub</a> or use it here.</p>
-		
+	<p>Download your own copy from <a href="http://github.com/craic/raphael_live">GitHub</a> 
+	   or use it here.</p>	
 </div>
 
 </body>
